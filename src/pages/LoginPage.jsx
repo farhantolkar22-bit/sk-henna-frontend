@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Mail, Key, ArrowRight, ArrowLeft, RefreshCw, CheckCircle, Lock } from 'lucide-react';
 
@@ -11,6 +11,8 @@ import { Mail, Key, ArrowRight, ArrowLeft, RefreshCw, CheckCircle, Lock } from '
 
 export default function LoginPage({ onLoginSuccess, googleClientId }) {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirectPath = searchParams.get('redirect') || '/';
 
   // Redirect if already logged in
   useEffect(() => {
@@ -36,7 +38,7 @@ export default function LoginPage({ onLoginSuccess, googleClientId }) {
         border: '1px solid rgba(255,255,255,0.65)',
         boxShadow: '0 20px 60px rgba(236,72,153,0.12), 0 4px 16px rgba(0,0,0,0.06)',
       }}>
-        <UnifiedFlow onLoginSuccess={onLoginSuccess} navigate={navigate} googleClientId={googleClientId} />
+        <UnifiedFlow onLoginSuccess={onLoginSuccess} navigate={navigate} googleClientId={googleClientId} redirectPath={redirectPath} />
 
         {/* Back to site */}
         <button
@@ -59,7 +61,7 @@ export default function LoginPage({ onLoginSuccess, googleClientId }) {
 // ─────────────────────────────────────────────────────────────
 //  Main Flow Component
 // ─────────────────────────────────────────────────────────────
-function UnifiedFlow({ onLoginSuccess, navigate, googleClientId }) {
+function UnifiedFlow({ onLoginSuccess, navigate, googleClientId, redirectPath }) {
   const [step, setStep] = useState('email');      // email | password | otp | success
   const [email, setEmail] = useState('');
   const [role, setRole] = useState(null);          // 'admin' | 'user'
@@ -97,7 +99,7 @@ function UnifiedFlow({ onLoginSuccess, navigate, googleClientId }) {
         }
         setStep('success');
         setTimeout(() => {
-          navigate(data.role === 'admin' ? '/admin' : '/');
+          navigate(data.role === 'admin' ? '/admin' : redirectPath);
         }, 1200);
       } else {
         setError(data.message || 'Google login failed.');
@@ -253,7 +255,7 @@ function UnifiedFlow({ onLoginSuccess, navigate, googleClientId }) {
         sessionStorage.setItem('userRole', 'user');
         if (onLoginSuccess) onLoginSuccess('user');
         setStep('success');
-        setTimeout(() => navigate('/'), 1500);
+        setTimeout(() => navigate(redirectPath), 1500);
       } else {
         setError(data.message || 'Invalid OTP. Try again.');
       }
@@ -299,7 +301,7 @@ function UnifiedFlow({ onLoginSuccess, navigate, googleClientId }) {
         {role === 'admin' ? <Lock size={24} color="white" /> : <span style={{ fontSize: '24px' }}>✦</span>}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: '1.1' }}>
-        <span style={{ fontFamily: 'Georgia, serif', fontSize: '26px', fontWeight: '950', letterSpacing: '0.05em', color: '#1e293b' }}>SHAHLA</span>
+        <span style={{ fontFamily: 'Georgia, serif', fontSize: '26px', fontWeight: '950', letterSpacing: '0.05em', color: '#1e293b' }}>HENNA</span>
         <span style={{ fontSize: '10px', fontWeight: '800', color: '#db2777', letterSpacing: '0.1em', textTransform: 'uppercase' }}>BY SHIFA & SAHLA</span>
       </div>
     </div>

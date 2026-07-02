@@ -142,7 +142,7 @@ export default function AdminDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <div className="flex flex-col leading-none text-left">
-              <span className="text-xl font-black tracking-wider text-slate-900 font-serif">SHAHLA</span>
+              <span className="text-xl font-black tracking-wider text-slate-900 font-serif">HENNA</span>
               <span className="text-[9px] font-bold text-pink-600 uppercase tracking-widest mt-0.5">by Shifa & Sahla Admin</span>
             </div>
             <span className="bg-pink-100 text-pink-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">

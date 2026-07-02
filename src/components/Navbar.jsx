@@ -41,7 +41,7 @@ export default function Navbar({ userRole }) {
           
           {/* Logo / Brand */}
           <Link to="/" className="flex flex-col cursor-pointer text-left leading-none" onClick={handleNavClick}>
-            <span className="text-xl sm:text-2xl font-black tracking-wider text-slate-900 font-serif">SHAHLA</span>
+            <span className="text-xl sm:text-2xl font-black tracking-wider text-slate-900 font-serif">HENNA</span>
             <span className="text-[10px] sm:text-xs font-bold tracking-widest text-pink-600 uppercase mt-0.5">by Shifa & Sahla</span>
           </Link>
 

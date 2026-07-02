@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Calendar, Clock, MapPin, Phone, User, Send, CheckCircle, Sparkles } from 'lucide-react';
 
 export default function BookingForm({ config }) {
+  const navigate = useNavigate();
+  const isLoggedIn = sessionStorage.getItem('userRole') || sessionStorage.getItem('adminToken');
+
+  const handleFormInteraction = (e) => {
+    if (!isLoggedIn) {
+      e.preventDefault();
+      navigate('/login?redirect=/booking');
+    }
+  };
+
   const [formData, setFormData] = useState({
     clientName: '',
     phone: '',
@@ -27,7 +38,7 @@ export default function BookingForm({ config }) {
   const generateWhatsAppUrl = (booking) => {
     const cleanPhone = booking.phone.replace(/[^0-9]/g, '');
     const waLink = cleanPhone ? `(https://wa.me/${cleanPhone})` : '';
-    const message = `*SHAHLA by Shifa & Sahla - Artist Booking* 🌸\n\n` +
+    const message = `*Henna by Shifa & Sahla - Artist Booking* 🌸\n\n` +
       `*Booking ID:* #${booking.id}\n` +
       `*Client Name:* ${booking.clientName}\n` +
       `*Phone Number:* ${booking.phone} ${waLink}\n\n` +
@@ -147,7 +158,7 @@ export default function BookingForm({ config }) {
           </div>
         ) : (
           <div className="glass-card rounded-[32px] p-6 sm:p-10 border border-white/60 shadow-xl max-w-3xl mx-auto">
-            <form onSubmit={handleSubmit} className="space-y-6 text-left">
+            <form onSubmit={handleSubmit} onClickCapture={handleFormInteraction} onFocusCapture={handleFormInteraction} className="space-y-6 text-left">
               {error && (
                 <div className="bg-red-50 border border-red-200 text-red-600 text-xs font-semibold p-3.5 rounded-xl">
                   {error}

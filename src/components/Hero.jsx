@@ -97,7 +97,7 @@ export default function Hero({ onBookClick, onOrderClick }) {
               <div className="text-center w-full mt-2">
                 <h3 className="text-2xl font-cursive font-medium text-amber-950 tracking-wider">@Henna_by_shifa25</h3>
                 <div className="flex flex-col items-center justify-center border-b-2 border-slate-900 w-fit mx-auto px-6 mt-1 pb-1">
-                  <span className="text-2xl font-serif font-black text-slate-900 tracking-wider leading-none">SHAHLA</span>
+                  <span className="text-2xl font-serif font-black text-slate-900 tracking-wider leading-none">HENNA</span>
                   <span className="text-[10px] font-bold text-pink-600 uppercase tracking-widest leading-none mt-1">by Shifa & Sahla</span>
                 </div>
               </div>

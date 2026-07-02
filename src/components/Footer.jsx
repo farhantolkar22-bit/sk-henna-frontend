@@ -26,7 +26,7 @@ export default function Footer({ config }) {
           {/* Brand Info */}
           <div className="md:col-span-5 text-left space-y-4">
             <div className="flex flex-col text-left leading-none">
-              <span className="text-2xl font-black tracking-wider text-white font-serif">SHAHLA</span>
+              <span className="text-2xl font-black tracking-wider text-white font-serif">HENNA</span>
               <span className="text-[10px] font-bold tracking-widest text-pink-500 uppercase mt-1">by Shifa & Sahla</span>
             </div>
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
@@ -138,7 +138,7 @@ export default function Footer({ config }) {
 
         {/* Footer Bottom copyright */}
         <div className="flex flex-col sm:flex-row justify-between items-center text-xs font-semibold text-slate-500 space-y-3 sm:space-y-0">
-          <span>&copy; {new Date().getFullYear()} SHAHLA by Shifa & Sahla. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Henna by Shifa & Sahla. All rights reserved.</span>
           <span className="flex items-center">
             Made with <Heart size={12} className="text-pink-600 fill-current mx-1" /> by @Henna_by_shifa25
           </span>

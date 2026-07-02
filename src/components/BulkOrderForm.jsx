@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ShoppingBag, MapPin, Phone, User, Send, CheckCircle } from 'lucide-react';
 
 export default function BulkOrderForm({ quantities, setQuantities, config }) {
+  const navigate = useNavigate();
+  const isLoggedIn = sessionStorage.getItem('userRole') || sessionStorage.getItem('adminToken');
+
+  const handleFormInteraction = (e) => {
+    if (!isLoggedIn) {
+      e.preventDefault();
+      navigate('/login?redirect=/cones');
+    }
+  };
+
   const [formData, setFormData] = useState({
     customerName: '',
     phone: '',
@@ -29,7 +40,7 @@ export default function BulkOrderForm({ quantities, setQuantities, config }) {
   const generateWhatsAppUrl = (order) => {
     const cleanPhone = order.phone.replace(/[^0-9]/g, '');
     const waLink = cleanPhone ? `(https://wa.me/${cleanPhone})` : '';
-    const message = `*SHAHLA by Shifa & Sahla - Bulk Cone Order* 🌿\n\n` +
+    const message = `*Henna by Shifa & Sahla - Bulk Cone Order* 🌿\n\n` +
       `*Order ID:* #${order.id || order._id}\n` +
       `*Customer Name:* ${order.customerName}\n` +
       `*Phone Number:* ${order.phone} ${waLink}\n\n` +
@@ -178,7 +189,7 @@ export default function BulkOrderForm({ quantities, setQuantities, config }) {
             </div>
 
             {/* Right: Shipping details form */}
-            <form onSubmit={handleSubmit} className="md:col-span-7 space-y-5 text-left">
+            <form onSubmit={handleSubmit} onClickCapture={handleFormInteraction} onFocusCapture={handleFormInteraction} className="md:col-span-7 space-y-5 text-left">
               {error && (
                 <div className="bg-red-50 border border-red-200 text-red-600 text-xs font-semibold p-3.5 rounded-xl">
                   {error}
