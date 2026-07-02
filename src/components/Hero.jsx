@@ -96,9 +96,10 @@ export default function Hero({ onBookClick, onOrderClick }) {
               {/* Header Title from Flyer */}
               <div className="text-center w-full mt-2">
                 <h3 className="text-2xl font-cursive font-medium text-amber-950 tracking-wider">@Henna_by_shifa25</h3>
-                <h2 className="text-3xl font-serif font-black text-slate-900 border-b-2 border-slate-900 w-fit mx-auto px-4 mt-1 pb-1">
-                  SK_Henna
-                </h2>
+                <div className="flex flex-col items-center justify-center border-b-2 border-slate-900 w-fit mx-auto px-6 mt-1 pb-1">
+                  <span className="text-2xl font-serif font-black text-slate-900 tracking-wider leading-none">SHAHLA</span>
+                  <span className="text-[10px] font-bold text-pink-600 uppercase tracking-widest leading-none mt-1">by Shifa & Sahla</span>
+                </div>
               </div>
 
               {/* Center section: pricing and round visual */}
@@ -109,13 +110,11 @@ export default function Hero({ onBookClick, onOrderClick }) {
                 </div>
 
                 {/* Cone Pricing Table list */}
-                <div className="col-span-6 flex flex-col text-left space-y-1.5 pl-2 z-10">
+                <div className="col-span-6 flex flex-col text-left space-y-2 pl-2 z-10">
                   <h4 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-1">Organic Cones</h4>
-                  <div className="text-[11px] font-extrabold text-pink-700 leading-none">NAIL CONE</div>
-                  <div className="text-lg font-black text-slate-950 leading-none mb-1">₹ 20/-</div>
 
-                  <div className="text-[11px] font-extrabold text-pink-700 leading-none">NORMAL HAND</div>
-                  <div className="text-lg font-black text-slate-950 leading-none mb-1">₹ 20/-</div>
+                  <div className="text-[11px] font-extrabold text-pink-700 leading-none">SIDER CONE</div>
+                  <div className="text-lg font-black text-slate-950 leading-none mb-1.5">₹ 20/-</div>
 
                   <div className="text-[11px] font-extrabold text-pink-700 leading-none">BRIDAL CONE</div>
                   <div className="text-lg font-black text-slate-950 leading-none">₹ 40/-</div>
@@ -139,8 +138,8 @@ export default function Hero({ onBookClick, onOrderClick }) {
                   <p className="text-[10px] text-slate-700 font-medium pl-2.5 -mt-1 leading-tight">Freshly homemade cones.</p>
                 </div>
 
-                {/* Miniature Nails Circular Inset */}
-                <div className="w-16 h-16 rounded-full border-2 border-amber-400 shadow-md overflow-hidden bg-cover bg-center shrink-0 mr-2 transform translate-y-1" style={{ backgroundImage: "url('/henna_nails.png')" }}>
+                {/* Miniature Cones Circular Inset */}
+                <div className="w-16 h-16 rounded-full border-2 border-amber-400 shadow-md overflow-hidden bg-cover bg-center shrink-0 mr-2 transform translate-y-1" style={{ backgroundImage: "url('/henna_cones.png')" }}>
                 </div>
 
                 {/* Yellow Book Now Tag */}

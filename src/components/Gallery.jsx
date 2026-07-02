@@ -23,14 +23,6 @@ export default function Gallery() {
       description: 'Handcrafted fresh organic henna cones packaged and ready for bridal application.'
     },
     {
-      id: 3,
-      title: 'Dark Henna Nail Stain',
-      category: 'nails',
-      img: '/henna_nails.png',
-      likes: '115',
-      description: 'Traditional rich organic henna stain on nails, providing a chemical-free orange-red gloss.'
-    },
-    {
       id: 4,
       title: 'Mehndi Mandalas',
       category: 'bridal',
@@ -45,22 +37,13 @@ export default function Gallery() {
       img: '/henna_cones.png',
       likes: '74',
       description: 'Fresh batch of smooth flowing cones made with pure Rajasthani henna powder and tea tree essential oil.'
-    },
-    {
-      id: 6,
-      title: 'Elegant Stained Nails',
-      category: 'nails',
-      img: '/henna_nails.png',
-      likes: '106',
-      description: 'Natural stain showing the beautiful transition of henna coloring over time.'
     }
   ];
 
   const categories = [
     { name: 'All Work', value: 'all' },
     { name: 'Bridal Designs', value: 'bridal' },
-    { name: 'Organic Cones', value: 'cones' },
-    { name: 'Nail Stains', value: 'nails' }
+    { name: 'Organic Cones', value: 'cones' }
   ];
 
   const filteredItems = activeTab === 'all'
@@ -79,7 +62,7 @@ export default function Gallery() {
           </div>
           <h2 className="text-3xl sm:text-4xl font-serif font-black text-slate-900 mb-4">Our Henna Gallery</h2>
           <p className="text-slate-600 text-sm sm:text-base">
-            Take a look at our authentic creations, including intricate bridal henna, organic nail stains, and freshly rolled cones.
+            Take a look at our authentic creations, including intricate bridal henna designs and freshly rolled organic cones.
           </p>
         </div>
 

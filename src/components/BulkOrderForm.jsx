@@ -12,15 +12,14 @@ export default function BulkOrderForm({ quantities, setQuantities, config }) {
   const [success, setSuccess] = useState(false);
   const [orderResult, setOrderResult] = useState(null);
 
-  const prices = config?.prices || { nailCone: 20, normalCone: 20, bridalCone: 40 };
+  const prices = config?.prices || { siderCone: 20, bridalCone: 40 };
   const whatsappNumber = config?.whatsappNumber || '918149814003';
 
-  const nailQty = quantities.nailCone || 0;
-  const normalQty = quantities.normalCone || 0;
+  const siderQty = quantities.siderCone || 0;
   const bridalQty = quantities.bridalCone || 0;
 
-  const totalItems = nailQty + normalQty + bridalQty;
-  const totalPrice = (nailQty * prices.nailCone) + (normalQty * prices.normalCone) + (bridalQty * prices.bridalCone);
+  const totalItems = siderQty + bridalQty;
+  const totalPrice = (siderQty * prices.siderCone) + (bridalQty * prices.bridalCone);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,14 +27,15 @@ export default function BulkOrderForm({ quantities, setQuantities, config }) {
   };
 
   const generateWhatsAppUrl = (order) => {
-    const message = `*SK_Henna Bulk Cone Order* 🌿\n\n` +
-      `*Order ID:* #${order.id}\n` +
+    const cleanPhone = order.phone.replace(/[^0-9]/g, '');
+    const waLink = cleanPhone ? `(https://wa.me/${cleanPhone})` : '';
+    const message = `*SHAHLA by Shifa & Sahla - Bulk Cone Order* 🌿\n\n` +
+      `*Order ID:* #${order.id || order._id}\n` +
       `*Customer Name:* ${order.customerName}\n` +
-      `*Phone Number:* ${order.phone}\n\n` +
+      `*Phone Number:* ${order.phone} ${waLink}\n\n` +
       `*Items Ordered:*\n` +
-      (order.nailConesQty > 0 ? `• Nail Cones: ${order.nailConesQty} x ₹${prices.nailCone} = ₹${order.nailConesQty * prices.nailCone}\n` : '') +
-      (order.normalConesQty > 0 ? `• Normal Hand Cones: ${order.normalConesQty} x ₹${prices.normalCone} = ₹${order.normalConesQty * prices.normalCone}\n` : '') +
-      (order.bridalConesQty > 0 ? `• Bridal Cones: ${order.bridalConesQty} x ₹${prices.bridalCone} = ₹${order.bridalConesQty * prices.bridalCone}\n` : '') +
+      (order.siderConesQty > 0 ? `• Sider Cones: ${order.siderConesQty} x ₹${prices.siderCone || 20} = ₹${order.siderConesQty * (prices.siderCone || 20)}\n` : '') +
+      (order.bridalConesQty > 0 ? `• Bridal Cones: ${order.bridalConesQty} x ₹${prices.bridalCone || 40} = ₹${order.bridalConesQty * (prices.bridalCone || 40)}\n` : '') +
       `\n*Total Amount:* ₹${order.totalPrice}/-\n` +
       `*Shipping Address:* ${order.address}\n\n` +
       `Please confirm my order. Thank you! 🙏✨`;
@@ -66,8 +66,7 @@ export default function BulkOrderForm({ quantities, setQuantities, config }) {
         body: JSON.stringify({
           customerName: formData.customerName,
           phone: formData.phone,
-          nailConesQty: nailQty,
-          normalConesQty: normalQty,
+          siderConesQty: siderQty,
           bridalConesQty: bridalQty,
           address: formData.address
         })
@@ -83,8 +82,15 @@ export default function BulkOrderForm({ quantities, setQuantities, config }) {
       setSuccess(true);
       
       // Clear quantities
-      setQuantities({ nailCone: 0, normalCone: 0, bridalCone: 0 });
+      setQuantities({ siderCone: 0, bridalCone: 0 });
       setFormData({ customerName: '', phone: '', address: '' });
+
+      // Auto-redirect to WhatsApp
+      const url = generateWhatsAppUrl(data.order);
+      const newTab = window.open(url, '_blank');
+      if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+        window.location.href = url;
+      }
       
     } catch (err) {
       setError(err.message || 'Something went wrong. Please try again.');
@@ -150,12 +156,8 @@ export default function BulkOrderForm({ quantities, setQuantities, config }) {
               
               <div className="space-y-4">
                 <div className="flex justify-between items-center text-sm py-1.5 border-b border-slate-100">
-                  <span className="text-slate-500 font-medium">Nail Cones (₹{prices.nailCone})</span>
-                  <span className="font-bold text-slate-800">{nailQty}</span>
-                </div>
-                <div className="flex justify-between items-center text-sm py-1.5 border-b border-slate-100">
-                  <span className="text-slate-500 font-medium">Normal Cones (₹{prices.normalCone})</span>
-                  <span className="font-bold text-slate-800">{normalQty}</span>
+                  <span className="text-slate-500 font-medium">Sider Cones (₹{prices.siderCone})</span>
+                  <span className="font-bold text-slate-800">{siderQty}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm py-1.5 border-b border-slate-100">
                   <span className="text-slate-500 font-medium">Bridal Cones (₹{prices.bridalCone})</span>

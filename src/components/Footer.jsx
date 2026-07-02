@@ -5,7 +5,10 @@ import { Instagram, MessageCircle, Phone, Heart, ArrowUp } from 'lucide-react';
 export default function Footer({ config }) {
   const instagramId = config?.instagramId || '@Henna_by_shifa25';
   const instagramUrl = config?.instagramUrl || 'https://www.instagram.com/Henna_by_shifa25';
+  const instagramId2 = config?.instagramId2 || '@sahla_hennartist';
+  const instagramUrl2 = config?.instagramUrl2 || 'https://www.instagram.com/sahla_hennartist';
   const whatsappNumber = config?.whatsappNumber || '918149814003';
+  const whatsappNumber2 = config?.whatsappNumber2 || '919309463714';
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -22,11 +25,9 @@ export default function Footer({ config }) {
           
           {/* Brand Info */}
           <div className="md:col-span-5 text-left space-y-4">
-            <div className="flex flex-col">
-              <span className="text-2xl font-bold font-serif text-white tracking-wide">SK_Henna</span>
-              <span className="text-sm font-cursive text-pink-500 font-medium tracking-wider -mt-1">
-                {instagramId}
-              </span>
+            <div className="flex flex-col text-left leading-none">
+              <span className="text-2xl font-black tracking-wider text-white font-serif">SHAHLA</span>
+              <span className="text-[10px] font-bold tracking-widest text-pink-500 uppercase mt-1">by Shifa & Sahla</span>
             </div>
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
               Premium chemical-free organic henna cones, rolled with passion and made to order. Providing stunning, dark reddish-brown stains for bridal and festive celebrations.
@@ -48,34 +49,78 @@ export default function Footer({ config }) {
           {/* Connect & Socials */}
           <div className="md:col-span-3 text-left space-y-4">
             <h4 className="text-xs font-bold text-slate-200 uppercase tracking-widest">Connect</h4>
-            <div className="flex space-x-3">
-              <a
-                href={instagramUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="bg-slate-800 hover:bg-pink-600 text-slate-300 hover:text-white p-2.5 rounded-full transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={18} />
-              </a>
-              <a
-                href={`https://wa.me/${whatsappNumber}`}
-                target="_blank"
-                rel="noreferrer"
-                className="bg-slate-800 hover:bg-emerald-600 text-slate-300 hover:text-white p-2.5 rounded-full transition-colors"
-                aria-label="WhatsApp"
-              >
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.66.986 3.292 1.48 4.961 1.481 5.378 0 9.755-4.375 9.758-9.759.002-2.608-1.012-5.06-2.859-6.907C16.602 2.122 14.15 1.107 11.54 1.107c-5.376 0-9.754 4.378-9.758 9.76-.001 1.776.478 3.4 1.385 4.896l-.999 3.647 3.738-.98c1.428.78 3.01 1.192 4.674 1.192zm11.233-6.536c-.26-.13-1.538-.759-1.776-.845-.238-.087-.41-.13-.58.13-.17.26-.66.845-.81.995-.15.17-.3.19-.56.06-.26-.13-1.1-.405-2.096-1.293-.775-.69-1.3-1.544-1.45-1.805-.15-.26-.015-.4-.145-.53-.12-.115-.26-.3-.39-.45-.13-.15-.17-.26-.26-.43-.09-.17-.04-.325.01-.455.05-.13.17-.41.26-.61.09-.2.12-.34.18-.45.06-.11.03-.21-.015-.34-.045-.13-.41-1-.56-1.37-.15-.36-.3-.31-.41-.315-.1-.005-.22-.005-.34-.005-.12 0-.32.045-.49.23-.17.185-.66.645-.66 1.57 0 .925.67 1.82.76 1.95.09.13 1.32 2.016 3.2 2.825.447.193.796.308 1.07.395.45.14.86.12 1.18.07.36-.05 1.538-.627 1.755-1.232.217-.606.217-1.127.15-1.23-.07-.105-.24-.17-.5-.3z"/>
-                </svg>
-              </a>
-              <a
-                href={`tel:+${whatsappNumber}`}
-                className="bg-slate-800 hover:bg-amber-600 text-slate-300 hover:text-white p-2.5 rounded-full transition-colors"
-                aria-label="Phone Call"
-              >
-                <Phone size={18} />
-              </a>
+            <div className="space-y-4">
+              {/* Shifa Profile */}
+              <div className="space-y-1.5">
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Cones & Bridal (Shifa)</span>
+                <div className="flex items-center space-x-2">
+                  <a
+                    href={instagramUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-slate-800 hover:bg-pink-600 text-slate-300 hover:text-white p-2 rounded-full transition-colors flex items-center justify-center shrink-0"
+                    aria-label="Shifa's Instagram"
+                    title="Shifa Mehndi - @Henna_by_shifa25"
+                  >
+                    <Instagram size={14} />
+                  </a>
+                  <a
+                    href={`https://wa.me/${whatsappNumber}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-[#25D366] hover:bg-[#128C7E] text-white p-2 rounded-full transition-all duration-300 shadow-sm shrink-0 flex items-center justify-center"
+                    aria-label="Shifa's WhatsApp"
+                  >
+                    <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                      <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    </svg>
+                  </a>
+                  <a
+                    href={`tel:+${whatsappNumber}`}
+                    className="bg-slate-800 hover:bg-amber-600 text-slate-300 hover:text-white p-2 rounded-full transition-colors flex items-center justify-center shrink-0"
+                    aria-label="Phone Call Shifa"
+                  >
+                    <Phone size={14} />
+                  </a>
+                  <span className="text-[11px] font-bold text-slate-400 font-mono tracking-tight">{instagramId}</span>
+                </div>
+              </div>
+
+              {/* Sahla Profile */}
+              <div className="space-y-1.5">
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Bookings & Eid (Sahla)</span>
+                <div className="flex items-center space-x-2">
+                  <a
+                    href={instagramUrl2}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-slate-800 hover:bg-pink-600 text-slate-300 hover:text-white p-2 rounded-full transition-colors flex items-center justify-center shrink-0"
+                    aria-label="Sahla's Instagram"
+                    title="Sahla Mehndi - @sahla_hennartist"
+                  >
+                    <Instagram size={14} />
+                  </a>
+                  <a
+                    href={`https://wa.me/${whatsappNumber2}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="bg-[#25D366] hover:bg-[#128C7E] text-white p-2 rounded-full transition-all duration-300 shadow-sm shrink-0 flex items-center justify-center"
+                    aria-label="Sahla's WhatsApp"
+                  >
+                    <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+                      <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                    </svg>
+                  </a>
+                  <a
+                    href={`tel:+${whatsappNumber2}`}
+                    className="bg-slate-800 hover:bg-amber-600 text-slate-300 hover:text-white p-2 rounded-full transition-colors flex items-center justify-center shrink-0"
+                    aria-label="Phone Call Sahla"
+                  >
+                    <Phone size={14} />
+                  </a>
+                  <span className="text-[11px] font-bold text-slate-400 font-mono tracking-tight">{instagramId2}</span>
+                </div>
+              </div>
             </div>
             
             <button
@@ -93,7 +138,7 @@ export default function Footer({ config }) {
 
         {/* Footer Bottom copyright */}
         <div className="flex flex-col sm:flex-row justify-between items-center text-xs font-semibold text-slate-500 space-y-3 sm:space-y-0">
-          <span>&copy; {new Date().getFullYear()} SK Henna. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} SHAHLA by Shifa & Sahla. All rights reserved.</span>
           <span className="flex items-center">
             Made with <Heart size={12} className="text-pink-600 fill-current mx-1" /> by @Henna_by_shifa25
           </span>

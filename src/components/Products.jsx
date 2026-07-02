@@ -5,20 +5,12 @@ export default function Products({ quantities, setQuantities, onOrderClick }) {
   
   const products = [
     {
-      id: 'nailCone',
-      name: 'Nail Cone',
+      id: 'siderCone',
+      name: 'Sider Cone',
       price: 20,
-      description: 'Specially filtered smooth paste for staining nails. Gives a deep, long-lasting reddish-brown stain.',
-      img: '/henna_nails.png',
-      features: ['Nail dyeing', 'Rich color', 'Deep stain', 'Fine tip']
-    },
-    {
-      id: 'normalCone',
-      name: 'Normal Hand Cone',
-      price: 20,
-      description: 'Perfect for casual applications, festivals, and simple party designs. Flowing paste with great consistency.',
+      description: 'Made with 100% organic Sidr leaf powder. Smooth-flowing consistency with natural conditioning for a rich, cooling stain.',
       img: '/henna_cones.png',
-      features: ['Party designs', 'Smooth paste', 'Rich stain', 'Freshly made']
+      features: ['Organic Sidr leaves', 'Cooling effect', 'Smooth flow paste', 'Stunning stain']
     },
     {
       id: 'bridalCone',
@@ -63,7 +55,7 @@ export default function Products({ quantities, setQuantities, onOrderClick }) {
         </div>
 
         {/* Product Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
           {products.map((prod) => {
             const qty = quantities[prod.id] || 0;
             return (

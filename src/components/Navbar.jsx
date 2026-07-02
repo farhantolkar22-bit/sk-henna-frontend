@@ -40,9 +40,9 @@ export default function Navbar({ userRole }) {
         <div className="flex justify-between items-center">
           
           {/* Logo / Brand */}
-          <Link to="/" className="flex flex-col cursor-pointer" onClick={handleNavClick}>
-            <span className="text-2xl font-semibold tracking-wide text-slate-800 font-serif">SK_Henna</span>
-            <span className="text-sm font-cursive text-pink-600 tracking-wider -mt-1 font-medium">@Henna_by_shifa25</span>
+          <Link to="/" className="flex flex-col cursor-pointer text-left leading-none" onClick={handleNavClick}>
+            <span className="text-xl sm:text-2xl font-black tracking-wider text-slate-900 font-serif">SHAHLA</span>
+            <span className="text-[10px] sm:text-xs font-bold tracking-widest text-pink-600 uppercase mt-0.5">by Shifa & Sahla</span>
           </Link>
 
           {/* Desktop Navigation Links */}

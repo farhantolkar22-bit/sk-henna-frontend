@@ -17,7 +17,7 @@ export default function BookingForm({ config }) {
   const [success, setSuccess] = useState(false);
   const [bookingResult, setBookingResult] = useState(null);
 
-  const whatsappNumber = config?.whatsappNumber || '918149814003';
+  const whatsappNumber2 = config?.whatsappNumber2 || '919309463714';
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,10 +25,12 @@ export default function BookingForm({ config }) {
   };
 
   const generateWhatsAppUrl = (booking) => {
-    const message = `*SK_Henna Artist Booking* 🌸\n\n` +
+    const cleanPhone = booking.phone.replace(/[^0-9]/g, '');
+    const waLink = cleanPhone ? `(https://wa.me/${cleanPhone})` : '';
+    const message = `*SHAHLA by Shifa & Sahla - Artist Booking* 🌸\n\n` +
       `*Booking ID:* #${booking.id}\n` +
       `*Client Name:* ${booking.clientName}\n` +
-      `*Phone Number:* ${booking.phone}\n\n` +
+      `*Phone Number:* ${booking.phone} ${waLink}\n\n` +
       `*Booking Details:*\n` +
       `• Date: ${booking.date}\n` +
       `• Time: ${booking.time}\n` +
@@ -39,7 +41,7 @@ export default function BookingForm({ config }) {
       `\nPlease confirm availability for my slot. Thank you! ✨`;
 
     const encodedText = encodeURIComponent(message);
-    return `https://wa.me/${whatsappNumber}?text=${encodedText}`;
+    return `https://wa.me/${whatsappNumber2}?text=${encodedText}`;
   };
 
   const handleSubmit = async (e) => {
@@ -78,6 +80,13 @@ export default function BookingForm({ config }) {
         address: '',
         notes: ''
       });
+
+      // Auto-redirect to WhatsApp
+      const url = generateWhatsAppUrl(data.booking);
+      const newTab = window.open(url, '_blank');
+      if (!newTab || newTab.closed || typeof newTab.closed === 'undefined') {
+        window.location.href = url;
+      }
       
     } catch (err) {
       setError(err.message || 'Something went wrong. Please try again.');

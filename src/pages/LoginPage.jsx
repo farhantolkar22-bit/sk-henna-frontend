@@ -69,7 +69,7 @@ function UnifiedFlow({ onLoginSuccess, navigate, googleClientId }) {
   const [info, setInfo] = useState('');
   const [loading, setLoading] = useState(false);
   const [showMockModal, setShowMockModal] = useState(false);
-  const [mockEmailInput, setMockEmailInput] = useState('shifakherater@gmail.com');
+  const [mockEmailInput, setMockEmailInput] = useState('shifakheratkar@gmail.com');
   const [resendTimer, setResendTimer] = useState(0);
   const otpRefs = useRef([]);
 
@@ -298,8 +298,10 @@ function UnifiedFlow({ onLoginSuccess, navigate, googleClientId }) {
       }}>
         {role === 'admin' ? <Lock size={24} color="white" /> : <span style={{ fontSize: '24px' }}>✦</span>}
       </div>
-      <h1 style={{ fontFamily: 'Georgia, serif', fontSize: '24px', fontWeight: '800', color: '#1e293b', margin: 0 }}>SK_Henna</h1>
-      <p style={{ color: '#ec4899', fontSize: '13px', fontWeight: '500', margin: '4px 0 0' }}>@Henna_by_shifa25</p>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', lineHeight: '1.1' }}>
+        <span style={{ fontFamily: 'Georgia, serif', fontSize: '26px', fontWeight: '950', letterSpacing: '0.05em', color: '#1e293b' }}>SHAHLA</span>
+        <span style={{ fontSize: '10px', fontWeight: '800', color: '#db2777', letterSpacing: '0.1em', textTransform: 'uppercase' }}>BY SHIFA & SAHLA</span>
+      </div>
     </div>
   );
 

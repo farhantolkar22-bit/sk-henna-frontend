@@ -141,7 +141,10 @@ export default function AdminDashboard() {
       <header className="bg-white border-b border-slate-200 sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <h2 className="text-xl font-bold font-serif text-slate-900">SK_Henna Admin</h2>
+            <div className="flex flex-col leading-none text-left">
+              <span className="text-xl font-black tracking-wider text-slate-900 font-serif">SHAHLA</span>
+              <span className="text-[9px] font-bold text-pink-600 uppercase tracking-widest mt-0.5">by Shifa & Sahla Admin</span>
+            </div>
             <span className="bg-pink-100 text-pink-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
               Control Panel
             </span>
@@ -221,10 +224,10 @@ export default function AdminDashboard() {
               <div className="space-y-1">
                 <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Cones Sold</span>
                 <span className="text-2xl font-black text-slate-900">
-                  {stats.conesSold.nailCones + stats.conesSold.normalCones + stats.conesSold.bridalCones}
+                  {(stats.conesSold.siderCones || 0) + (stats.conesSold.bridalCones || 0)}
                 </span>
                 <span className="text-[9px] text-slate-400 font-semibold block">
-                  Nail: {stats.conesSold.nailCones} | Normal: {stats.conesSold.normalCones} | Bridal: {stats.conesSold.bridalCones}
+                  Sider: {stats.conesSold.siderCones || 0} | Bridal: {stats.conesSold.bridalCones || 0}
                 </span>
               </div>
               <div className="bg-violet-50 text-violet-600 p-3 rounded-xl">
@@ -367,14 +370,19 @@ export default function AdminDashboard() {
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex flex-wrap gap-1.5">
-                            {o.nailConesQty > 0 && (
+                            {o.siderConesQty > 0 && (
                               <span className="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded">
-                                Nail: {o.nailConesQty}
+                                Sider: {o.siderConesQty}
                               </span>
                             )}
                             {o.normalConesQty > 0 && (
                               <span className="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded">
                                 Normal: {o.normalConesQty}
+                              </span>
+                            )}
+                            {o.nailConesQty > 0 && (
+                              <span className="bg-slate-100 text-slate-700 text-[10px] font-bold px-2 py-0.5 rounded">
+                                Nail: {o.nailConesQty}
                               </span>
                             )}
                             {o.bridalConesQty > 0 && (
