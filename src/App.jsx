@@ -11,6 +11,7 @@ import ContactPage from './pages/ContactPage';
 import LoginPage from './pages/LoginPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminDashboard from './components/AdminDashboard';
+import { API_BASE_URL } from './config';
 
 function AppContent() {
   const location = useLocation();
@@ -22,7 +23,7 @@ function AppContent() {
   });
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/config')
+    fetch(`${API_BASE_URL}/api/config`)
       .then((res) => res.json())
       .then((data) => setConfig(data))
       .catch((err) => console.error('Failed to load config from backend:', err));

@@ -2,10 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGoogleLogin } from '@react-oauth/google';
 import { Mail, Key, ArrowRight, ArrowLeft, RefreshCw, CheckCircle, Lock } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 // ─────────────────────────────────────────────────────────────
 //  UNIFIED LOGIN — Smart flow based on email:
 //  • Admin email → password input → /admin dashboard
+//  • Any other email → OTP sent → enter OTP → /  (website)
 //  • Any other email → OTP sent → enter OTP → /  (website)
 // ─────────────────────────────────────────────────────────────
 
@@ -79,7 +81,7 @@ function UnifiedFlow({ onLoginSuccess, navigate, googleClientId, redirectPath })
   const handleGoogleSuccess = async (googleEmail) => {
     setLoading(true); setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/auth/google-login', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/google-login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: googleEmail })
@@ -152,7 +154,7 @@ function UnifiedFlow({ onLoginSuccess, navigate, googleClientId, redirectPath })
     if (!email.trim() || !email.includes('@')) { setError('Please enter a valid email address.'); return; }
     setLoading(true); setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/auth/check-role', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/check-role`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
@@ -176,7 +178,7 @@ function UnifiedFlow({ onLoginSuccess, navigate, googleClientId, redirectPath })
   const sendOtp = async () => {
     setLoading(true); setError(''); setInfo('');
     try {
-      const res = await fetch('http://localhost:5000/api/auth/send-otp', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/send-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email })
@@ -202,7 +204,7 @@ function UnifiedFlow({ onLoginSuccess, navigate, googleClientId, redirectPath })
     if (!password) { setError('Please enter your password.'); return; }
     setLoading(true); setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/admin/login', {
+      const res = await fetch(`${API_BASE_URL}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -244,7 +246,7 @@ function UnifiedFlow({ onLoginSuccess, navigate, googleClientId, redirectPath })
     if (code.length !== 6) { setError('Please enter the full 6-digit code.'); return; }
     setLoading(true); setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/auth/verify-otp', {
+      const res = await fetch(`${API_BASE_URL}/api/auth/verify-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, otp: code })

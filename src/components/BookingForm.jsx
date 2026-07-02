@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Clock, MapPin, Phone, User, Send, CheckCircle, Sparkles } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export default function BookingForm({ config }) {
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ export default function BookingForm({ config }) {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/bookings', {
+      const response = await fetch(`${API_BASE_URL}/api/bookings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

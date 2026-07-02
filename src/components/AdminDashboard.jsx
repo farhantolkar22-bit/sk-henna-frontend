@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, ShoppingBag, DollarSign, Package, Check, X, Search, RefreshCw, LogOut, ChevronRight, Lock } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -44,9 +45,9 @@ export default function AdminDashboard() {
       const headers = { 'Authorization': `Bearer ${authToken}` };
       
       const [bookingsRes, ordersRes, statsRes] = await Promise.all([
-        fetch('http://localhost:5000/api/admin/bookings', { headers }),
-        fetch('http://localhost:5000/api/admin/orders', { headers }),
-        fetch('http://localhost:5000/api/admin/stats', { headers })
+        fetch(`${API_BASE_URL}/api/admin/bookings`, { headers }),
+        fetch(`${API_BASE_URL}/api/admin/orders`, { headers }),
+        fetch(`${API_BASE_URL}/api/admin/stats`, { headers })
       ]);
 
       if (bookingsRes.status === 401 || bookingsRes.status === 403) {
@@ -83,7 +84,7 @@ export default function AdminDashboard() {
 
   const updateBookingStatus = async (id, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/bookings/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/admin/bookings/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -101,7 +102,7 @@ export default function AdminDashboard() {
 
   const updateOrderStatus = async (id, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/orders/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/admin/orders/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

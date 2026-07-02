@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Mail, Key, ArrowRight, ArrowLeft, Lock } from 'lucide-react';
+import { API_BASE_URL } from '../config';
 
 export default function AdminLoginPage({ onLoginSuccess }) {
   const [step, setStep] = useState('email'); // 'email' | 'password'
@@ -27,7 +28,7 @@ export default function AdminLoginPage({ onLoginSuccess }) {
     if (!password) { setError('Please enter your password.'); return; }
     setLoading(true); setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/admin/login', {
+      const res = await fetch(`${API_BASE_URL}/api/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
